@@ -10,6 +10,9 @@ class Question(models.Model):
     def __str__(self):
         return self.question_text
 
+    def get_answers(self):
+        return self.answer_set.all()   
+
 class Answer(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     answer_text = models.CharField(max_length=300)   

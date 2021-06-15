@@ -11,7 +11,9 @@ class Course(models.Model):
         return self.course_title
 
     def get_questions(self):
-        pass   
+        questions = self.question_set.all() #list(self.question_set.all())  
+        return questions
+
 
 
 class Result(models.Model):
@@ -21,4 +23,5 @@ class Result(models.Model):
 
     def __str__(self):
         return self.score
+
 

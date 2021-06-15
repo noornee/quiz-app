@@ -1,0 +1,64 @@
+{% extends 'quiz_app/base.html' %}
+{% load static %}
+
+
+
+
+
+
+{% block content %}
+
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
+          <button type="button" id="start-quiz" class="btn btn-success">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- endModal -->
+
+<div id="course-container">
+    {% for course in course_list %}
+    <div class="card">
+        <div class="card-body">
+            <button
+                class="btn btn-primary"
+                data-pk="{{course.pk}}"
+                data-title="{{course.course_title}}"
+                data-numquest="{{course.number_of_questions}}"
+                data-time="{{course.duration}}"
+                data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop"
+            >
+                {{ course }}
+            </button>
+        </div>
+      </div>
+    {% endfor %}
+</div>
+
+
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+{% block script %} 
+    <script src="{% static 'quiz_app/index.js' %}"></script>
+{% endblock script %}
