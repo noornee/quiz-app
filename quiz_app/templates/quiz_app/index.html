@@ -13,10 +13,10 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+          <!-- <h5 class="modal-title" id="staticBackdropLabel">Start  </h5> -->
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" id="modal-body-data">
           ...
         </div>
         <div class="modal-footer">
@@ -28,12 +28,15 @@
   </div>
 <!-- endModal -->
 
+<div></div>
+<h4></h4>
+
 <div id="course-container">
     {% for course in course_list %}
     <div class="card">
         <div class="card-body">
             <button
-                class="btn btn-primary"
+                class="btn btn-primary modal-btn"
                 data-pk="{{course.pk}}"
                 data-title="{{course.course_title}}"
                 data-numquest="{{course.number_of_questions}}"
@@ -41,7 +44,7 @@
                 data-bs-toggle="modal"
                 data-bs-target="#staticBackdrop"
             >
-                {{ course }}
+                {{ course.course_title }}
             </button>
         </div>
       </div>
@@ -58,7 +61,6 @@
 
 
 
-
-{% block script %} 
-    <script src="{% static 'quiz_app/index.js' %}"></script>
-{% endblock script %}
+  {% block script %} 
+    <script src="{% static 'quiz_app/index.js' %}" defer></script>
+  {% endblock script %}

@@ -1,3 +1,4 @@
+# import random
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -11,8 +12,14 @@ class Course(models.Model):
         return self.course_title
 
     def get_questions(self):
-        questions = self.question_set.all() #list(self.question_set.all())  
-        return questions
+        '''
+        ---do this to get random questions---
+        questions = list(self.question_set.all()) 
+        random.shuffle(questions)
+        return questions[:self.number_of_questions]
+        '''
+        questions = self.question_set.all()  
+        return questions[:self.number_of_questions]
 
 
 
