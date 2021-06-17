@@ -5,15 +5,12 @@ from .models import Course, Result
 from quiz_questions.models import Question, Answer
 # Create your views here.
 
+
+
 class CourseListView(ListView):
     model = Course
     template_name = 'quiz_app/index.html'
     context_object_name = 'course_list'
-
-# class CourseDetailView(DetailView):
-#     model = Question
-#     template_name = 'quiz_app/quiz_detail.html'
-#     context_object_name = 'course_detail'
 
 def course_detail_view(request, pk):
     course = Course.objects.get(pk=pk)
@@ -69,7 +66,7 @@ def save_data_view(request, pk):
 
                 results.append({q.question_text: {'correct_answer': correct_answer, 'answered': a_selected} })
             else:
-                results.append({q.question_text: 'not answered'})
+                results.append({q.question_text: 'not answered','correct_answer': correct_answer, })
         score_ = score * multiplier    
         Result.objects.create(course=course, user=user, score=score_)    
 

@@ -5,3 +5,9 @@ body {
 .not-visible {
     display: none;
 }
+
+#quiz-box {
+    margin-left: 50px;
+
+}
+

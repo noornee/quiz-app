@@ -8,11 +8,20 @@
 
 {% block content %}
 
-{{ obj }}
+<div class="row">
+    <div class="col text-center">
+        <p> {{ obj }} </p>
+    </div>
+    <!-- <div class="col text-right" id="timer-box"></div> -->
+</div>
+
+<a href="{% url 'quiz:course-list' %}" class="btn btn-danger">go back</a>
+
 
 <form id="quiz-form">
     {% csrf_token %}
-    <div id="quiz-box">
+    <div class="meh">
+        <div id="quiz-box"> </div>
     </div>
     <button type="submit" class="btn btn-primary mt-5">submit</button>
 </form>
@@ -25,7 +34,6 @@
 {% endblock content %}
 
 
-<!-- value="${answer}" -->
 
 
 

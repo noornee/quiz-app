@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'quiz_app.apps.QuizAppConfig',
-    'quiz_questions.apps.QuizQuestionsConfig'
+    'quiz_questions.apps.QuizQuestionsConfig',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -130,4 +131,4 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CSRF_COOKIE_NAME = "XSRF-TOKEN"
+# CSRF_COOKIE_NAME = "XSRF-TOKEN"

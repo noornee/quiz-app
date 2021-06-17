@@ -10,8 +10,37 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="{% static 'quiz_app/style.css' %}">
 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
 </head>
 <body>
+    <nav class="navbar navbar-light bg-dark px-3">
+        <a class="navbar-brand text-muted" href="{% url 'quiz:course-list' %}">
+            <span class="home-label">QuizApp</span>
+        </a>
+
+        <ul class="nav">
+            {% if request.user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'quiz:profile' %}">
+                <span class="material-icons"> account_circle </span>
+                <!-- <span class="label">Profile</span> -->
+            </a>
+            
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'quiz:logout' %}">
+                <span class="material-icons"> logout </span>
+                <!-- <span class="label">logout</span> -->
+            </a>
+          </li>
+
+          {% endif %}
+          
+        </ul>
+    </nav> 
+
     
 
     {% block content %}

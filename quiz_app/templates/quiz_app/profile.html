@@ -1,0 +1,18 @@
+{% extends 'quiz_app/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<p>
+    {{ user.username }}
+</p>
+
+{% for result in results %}
+<p>
+    {{ result.course }} :: {{ result.score }}
+</p>
+{% endfor %}
+
+
+{% endblock content %}
