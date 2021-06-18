@@ -3,14 +3,17 @@ from django.http import JsonResponse
 from django.views.generic import ListView
 from .models import Course, Result
 from quiz_questions.models import Question, Answer
+from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 
 
 
-class CourseListView(ListView):
+class CourseListView(LoginRequiredMixin, ListView):
     model = Course
     template_name = 'quiz_app/index.html'
     context_object_name = 'course_list'
+
+
 
 def course_detail_view(request, pk):
     course = Course.objects.get(pk=pk)

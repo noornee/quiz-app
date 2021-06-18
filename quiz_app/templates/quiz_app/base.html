@@ -41,6 +41,16 @@
         </ul>
     </nav> 
 
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="text-center alert alert-{{ message.tags }}">
+            welcome {{request.user}} {{ message }} <br>
+            click on any of the courses to start quiz
+        </div>
+    {% endfor %}
+{% endif %}
+
     
 
     {% block content %}

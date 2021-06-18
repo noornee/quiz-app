@@ -33,7 +33,6 @@ class Result(models.Model):
     score = models.FloatField(default=0)
     mod_date = models.DateTimeField(auto_now_add=True)
     
-    # id = models.IntegerField(default=1,null=False,primary_key=True)
     def save(self, *args, **kwargs):
         self.score = round(self.score, 2)
         super(Result, self).save(*args, **kwargs)
