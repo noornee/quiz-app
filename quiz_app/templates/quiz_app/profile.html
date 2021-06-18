@@ -1,18 +1,30 @@
 {% extends 'quiz_app/base.html' %}
 {% load static %}
 
+{% block title %}
+<title>Profile</title>
+{% endblock title %}
+
 {% block content %}
 
+<div class="btn-reset">
+    <a href="{% url 'quiz:password-change' %}" class="btn bg-danger text-white">change password</a>
+</div>
 
-<p>
-    {{ user.username }}
-</p>
+<p>username: {{ user.username }}</p>
 
+
+<h4>result list</h4>
+<hr>
 {% for result in results %}
 <p>
     {{ result.course }} :: {{ result.score }}
 </p>
 {% endfor %}
 
-
+<style>
+    .btn-reset {
+        margin: 20px;
+    }
+</style>
 {% endblock content %}

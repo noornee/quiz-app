@@ -1,9 +1,9 @@
 from django.shortcuts import render
-from django.contrib.auth.views import LoginView
-from django.views.generic.list import ListView
+from django.contrib.auth.views import LoginView, PasswordChangeView,PasswordResetDoneView
 from .models import Result
 from django.urls import reverse_lazy
 from django.views.generic.edit import FormView
+from django.views.generic import ListView
 from .custom_form import CustomUserCreationForm
 from django.contrib.auth import login
 from django.contrib.messages.views import SuccessMessageMixin
@@ -12,6 +12,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 # Create your views here.
+
 class UserRegisterForm(SuccessMessageMixin, FormView):
     template_name = 'quiz_app/register.html'
     form_class = CustomUserCreationForm
@@ -44,3 +45,10 @@ class UserProfileView(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         context['results'] = Result.objects.filter(user=self.request.user)
         return context
+
+class UserPasswordChangeView(PasswordChangeView):
+    template_name = 'users/password_change.html'
+    success_url = reverse_lazy('quiz:password-reset-done')
+
+class UserPasswordResetDoneView(PasswordResetDoneView):
+    template_name = 'users/password_reset_done.html'          

@@ -1,7 +1,9 @@
 {% extends 'quiz_app/base.html' %}
 {% load static %}
 
-
+{% block title %}
+<title>{{obj}}</title>
+{% endblock title %}
 
 
 
@@ -20,9 +22,7 @@
 
 <form id="quiz-form">
     {% csrf_token %}
-    <div class="meh">
         <div id="quiz-box"> </div>
-    </div>
     <button type="submit" class="btn btn-primary mt-5">submit</button>
 </form>
 
