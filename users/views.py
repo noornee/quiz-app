@@ -14,7 +14,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 
 class UserRegisterForm(SuccessMessageMixin, FormView):
-    template_name = 'quiz_app/register.html'
+    template_name = 'users/register.html'
     form_class = CustomUserCreationForm
     redirect_authenticated_user = True
     success_url = reverse_lazy('quiz:course-list')
@@ -28,7 +28,7 @@ class UserRegisterForm(SuccessMessageMixin, FormView):
 
 
 class UserLoginView(LoginView):
-    template_name = 'quiz_app/login.html'
+    template_name = 'users/login.html'
     redirect_authenticated_user = True
 
     def get_success_url(self):
@@ -38,7 +38,7 @@ class UserLoginView(LoginView):
 class UserProfileView(LoginRequiredMixin, ListView):
     model = Result
     context_object_name = 'results'
-    template_name = 'quiz_app/profile.html'
+    template_name = 'users/profile.html'
     ordering = ['-mod_date']
 
     def get_context_data(self, **kwargs):
