@@ -1,6 +1,6 @@
 # import random
 from django.db import models
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -27,17 +27,17 @@ class Course(models.Model):
 
 
 
-class Result(models.Model):
-    course = models.ForeignKey(Course, on_delete=models.CASCADE) 
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    score = models.FloatField(default=0)
-    mod_date = models.DateTimeField(auto_now_add=True)
+# class Result(models.Model):
+#     course = models.ForeignKey(Course, on_delete=models.CASCADE) 
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     score = models.FloatField(default=0)
+#     mod_date = models.DateTimeField(auto_now_add=True)
     
-    def save(self, *args, **kwargs):
-        self.score = round(self.score, 2)
-        super(Result, self).save(*args, **kwargs)
+#     def save(self, *args, **kwargs):
+#         self.score = round(self.score, 2)
+#         super(Result, self).save(*args, **kwargs)
         
-    def __str__(self):
-        return f"{str(self.course)} => {str(self.score)}"
+#     def __str__(self):
+#         return f"{str(self.user)}: {str(self.course)} => {str(self.score)}"
 
 

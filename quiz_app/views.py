@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.generic import ListView
-from .models import Course, Result
+from .models import Course
+from users.models import Result
 from quiz_questions.models import Question, Answer
 from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
