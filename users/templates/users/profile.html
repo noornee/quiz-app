@@ -1,12 +1,11 @@
 {% extends 'quiz_app/base.html' %}
-{% load static %}
+
 
 {% block title %}
 <title>Profile</title>
 {% endblock title %}
 
 {% block content %}
-
 
 
 <div class="card" >
@@ -17,16 +16,16 @@
       <li class="list-group-item">level: {{ profile.level }}</li>
       <li class="list-group-item">department: {{ profile.department }}</li>
     </ul>
-          <a href="{% url 'quiz:update-profile' profile.id %}" class="btn bg-primary text-white">update info</a>
+
     {% endfor %}
     <div class="card-body">
-
-      <a href="{% url 'quiz:password-change' %}" class="btn bg-danger text-white">change password</a>
+      <a href="{% url 'users:update-profile' request.user.id %}" class="btn bg-primary text-white">update info</a>
+      <a href="{% url 'users:password-change' %}" class="btn bg-danger text-white">change password</a>
     </div>
   </div>
 
-
-
+  <h4>{{ request.user.username }}</h4>
+  <h4>{{ request.user.id }}</h4>
 
 <h4>result list</h4>
 <hr>

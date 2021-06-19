@@ -25,14 +25,14 @@
         <ul class="nav">
             {% if request.user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'quiz:profile' %}">
+            <a class="nav-link" href="{% url 'users:profile' %}">
                 <span class="material-icons"> account_circle </span>
                 <!-- <span class="label">Profile</span> -->
             </a>
             
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'quiz:logout' %}">
+            <a class="nav-link" href="{% url 'users:logout' %}">
                 <span class="material-icons"> logout </span>
                 <!-- <span class="label">logout</span> -->
             </a>

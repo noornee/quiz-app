@@ -9,6 +9,7 @@ from django.contrib.auth import login
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import UpdateView
+# from django.views.generic import CreateView
 
 
 
@@ -50,14 +51,16 @@ class UserProfileView(LoginRequiredMixin, ListView):
 
 class UpdateUserProfileView(UpdateView):
     model = Profile 
-    context_object_name = 'update_profile'
+    # context_object_name = 'update-profile'
     template_name = 'users/update_profile.html'
     fields = '__all__'
-    success_url = reverse_lazy('quiz:profile')
-        
+    success_url = reverse_lazy('users:profile')
+
+
+
 class UserPasswordChangeView(PasswordChangeView):
     template_name = 'users/password_change.html'
-    success_url = reverse_lazy('quiz:password-reset-done')
+    success_url = reverse_lazy('users:password-reset-done')
 
 class UserPasswordResetDoneView(PasswordResetDoneView):
     template_name = 'users/password_reset_done.html'          

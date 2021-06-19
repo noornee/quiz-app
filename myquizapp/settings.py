@@ -132,6 +132,6 @@ STATIC_URL = '/static/'
 
 # New Params
 # CSRF_COOKIE_NAME = "XSRF-TOKEN"
-LOGIN_URL = 'quiz:login'
+LOGIN_URL = 'users:login'
 MEDIA_ROOT= os.path.join(BASE_DIR,'pictures')
 MEDIA_URL='/pictures/'

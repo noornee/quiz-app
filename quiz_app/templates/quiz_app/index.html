@@ -2,7 +2,9 @@
 {% load static %}
 
 
-
+{% block title %}
+<title>QuizApp</title>
+{% endblock title %}
 
 
 
@@ -28,8 +30,7 @@
   </div>
 <!-- endModal -->
 
-<div></div>
-<h4></h4>
+
 
 <div id="course-container">
     {% for course in course_list %}
