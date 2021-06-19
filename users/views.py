@@ -53,14 +53,22 @@ class UpdateUserProfileView(UpdateView):
     model = Profile 
     # context_object_name = 'update-profile'
     template_name = 'users/update_profile.html'
-    fields = '__all__'
+    fields = ['department', 'level', 'profile_image']
     success_url = reverse_lazy('users:profile')
+    
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(UpdateUserProfileView, self).form_valid(form)
 
 class CreateUserProfileView(CreateView):
     model = Profile 
     template_name = 'users/create_profile.html'
-    fields = '__all__' #['department', 'level', 'profile_image']
+    fields = ['department', 'level', 'profile_image']
     success_url = reverse_lazy('users:profile')
+    
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(CreateUserProfileView, self).form_valid(form)
 
 class UserPasswordChangeView(PasswordChangeView):
     template_name = 'users/password_change.html'
