@@ -19,9 +19,12 @@
 
     {% endfor %}
     <div class="card-body">
+      {% if not profile_model %}
       <a href="{% url 'users:create-profile' %}" class="btn bg-warning text-white">create info</a>
+      {% else %}
       <a href="{% url 'users:update-profile' request.user.id %}" class="btn bg-primary text-white">update info</a>
       <a href="{% url 'users:password-change' %}" class="btn bg-danger text-white">change password</a>
+      {% endif %}
     </div>
   </div>
 

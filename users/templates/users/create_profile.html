@@ -8,9 +8,43 @@
 
 
 {% block content %}
-<form action="" method="post">
-  {% csrf_token %}
-  {{ form }}
-  <input type="submit" name="" id="" value="submit" />
-</form>
+
+<div class="card bg-dark text-white">
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p class="btn btn-primary">
+        <input type="submit" value="change">
+        </p>
+    </form>
+</div>  
+
+<style>
+    input[type=submit]{
+       background: none;
+       border: none;
+       color: white;
+    }
+    
+
+    
+    .card {
+        width: 80vw;
+        border: 2px solid black;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 100px auto;
+    }
+    
+    
+    input[type=text], input[type=number] {
+        text-align: center;
+        outline: none;
+        border: 1px solid green;
+        width: 100%;
+        transition: border  2s;
+    }
+    
+</style>
+
 {% endblock content %} 
