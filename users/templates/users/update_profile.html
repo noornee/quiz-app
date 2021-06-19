@@ -1,0 +1,16 @@
+{% extends 'quiz_app/base.html' %}
+{% load static %}
+
+{% block title %}
+<title>Update</title>
+{% endblock title %}
+
+
+
+{% block content %}
+<form action="" method="post">
+  {% csrf_token %}
+  {{ form }}
+  <input type="submit" name="" id="" value="update" />
+</form>
+{% endblock content %} 

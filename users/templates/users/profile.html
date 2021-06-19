@@ -17,9 +17,10 @@
       <li class="list-group-item">level: {{ profile.level }}</li>
       <li class="list-group-item">department: {{ profile.department }}</li>
     </ul>
+          <a href="{% url 'quiz:update-profile' profile.id %}" class="btn bg-primary text-white">update info</a>
     {% endfor %}
     <div class="card-body">
-      <a href="" class="btn bg-primary text-white">update info</a>
+
       <a href="{% url 'quiz:password-change' %}" class="btn bg-danger text-white">change password</a>
     </div>
   </div>

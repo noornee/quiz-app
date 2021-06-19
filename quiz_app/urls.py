@@ -1,6 +1,6 @@
 from django.urls import path
 from django.contrib.auth.views import LogoutView
-from users.views import UserRegisterForm, UserLoginView,UserProfileView, UserPasswordChangeView, UserPasswordResetDoneView #user_profile_view
+from users.views import UserRegisterForm, UserLoginView,UserProfileView, UserPasswordChangeView, UserPasswordResetDoneView, UpdateUserProfileView #user_profile_view
 from .views import CourseListView,course_detail_view, course_data_view, save_data_view
 app_name = 'quiz'
 
@@ -11,6 +11,7 @@ urlpatterns = [
     path('login/',UserLoginView.as_view(), name='login'),
     path('logout/',LogoutView.as_view(next_page='quiz:login'), name='logout'),
     path('profile/',UserProfileView.as_view(),name='profile'),
+    path('profile/update/<int:pk>/',UpdateUserProfileView.as_view(),name='update-profile'), 
     path('change-password/',UserPasswordChangeView.as_view(),name='password-change'),
     path('change-password/done/',UserPasswordResetDoneView.as_view(),name='password-reset-done'),
     # path('users/',include('users.urls', namespace='users')),

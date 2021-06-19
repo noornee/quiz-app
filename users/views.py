@@ -8,6 +8,7 @@ from .custom_form import CustomUserCreationForm
 from django.contrib.auth import login
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import UpdateView
 
 
 
@@ -44,9 +45,16 @@ class UserProfileView(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['results'] = Result.objects.filter(user=self.request.user)
-        context['profile_model'] = Profile.objects.all()
+        context['profile_model'] = Profile.objects.filter(user=self.request.user)
         return context
 
+class UpdateUserProfileView(UpdateView):
+    model = Profile 
+    context_object_name = 'update_profile'
+    template_name = 'users/update_profile.html'
+    fields = '__all__'
+    success_url = reverse_lazy('quiz:profile')
+        
 class UserPasswordChangeView(PasswordChangeView):
     template_name = 'users/password_change.html'
     success_url = reverse_lazy('quiz:password-reset-done')
