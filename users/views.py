@@ -9,7 +9,7 @@ from django.contrib.auth import login
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import UpdateView
-# from django.views.generic import CreateView
+from django.views.generic import CreateView
 
 
 
@@ -56,7 +56,11 @@ class UpdateUserProfileView(UpdateView):
     fields = '__all__'
     success_url = reverse_lazy('users:profile')
 
-
+class CreateUserProfileView(CreateView):
+    model = Profile 
+    template_name = 'users/create_profile.html'
+    fields = '__all__' #['department', 'level', 'profile_image']
+    success_url = reverse_lazy('users:profile')
 
 class UserPasswordChangeView(PasswordChangeView):
     template_name = 'users/password_change.html'
