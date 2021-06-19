@@ -7,24 +7,41 @@
 
 {% block content %}
 
-<div class="btn-reset">
-    <a href="{% url 'quiz:password-change' %}" class="btn bg-danger text-white">change password</a>
-</div>
 
-<p>username: {{ user.username }}</p>
+
+<div class="card" >
+    <img src="{{ user.profile.profile_image.url }}" class="card-img-top" alt="...">
+    {% for profile in profile_model %}
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" >username: {{ profile.user }}</li>
+      <li class="list-group-item">level: {{ profile.level }}</li>
+      <li class="list-group-item">department: {{ profile.department }}</li>
+    </ul>
+    {% endfor %}
+    <div class="card-body">
+      <a href="" class="btn bg-primary text-white">update info</a>
+      <a href="{% url 'quiz:password-change' %}" class="btn bg-danger text-white">change password</a>
+    </div>
+  </div>
+
+
 
 
 <h4>result list</h4>
 <hr>
 {% for result in results %}
 <p>
-    {{ result.course }} :: {{ result.score }}
+    {{ result.course }} :: {{ result.score }} {{ result.level }}
 </p>
 {% endfor %}
 
 <style>
-    .btn-reset {
-        margin: 20px;
+        .card {
+        width: 30rem;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 100px auto;
     }
 </style>
+
 {% endblock content %}

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.views import LoginView, PasswordChangeView,PasswordResetDoneView
-from .models import Result
+from .models import Result, Profile
 from django.urls import reverse_lazy
 from django.views.generic.edit import FormView
 from django.views.generic import ListView
@@ -44,6 +44,7 @@ class UserProfileView(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['results'] = Result.objects.filter(user=self.request.user)
+        context['profile_model'] = Profile.objects.all()
         return context
 
 class UserPasswordChangeView(PasswordChangeView):

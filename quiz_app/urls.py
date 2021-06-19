@@ -2,7 +2,6 @@ from django.urls import path
 from django.contrib.auth.views import LogoutView
 from users.views import UserRegisterForm, UserLoginView,UserProfileView, UserPasswordChangeView, UserPasswordResetDoneView #user_profile_view
 from .views import CourseListView,course_detail_view, course_data_view, save_data_view
-
 app_name = 'quiz'
 
 

@@ -6,7 +6,9 @@ from quiz_app.models import Course
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    department = models.CharField(max_length=100)
+    department = models.CharField(max_length=100,blank=True, null=True)
+    level = models.IntegerField(blank=True, null=True)
+    profile_image = models.ImageField(default='placeholder.jpg',upload_to='profile_pictures')
 
     def __str__(self):
         return self.user.username
