@@ -110,7 +110,7 @@ const sendData = () => {
             const results = response.results
             quizForm.classList.add('not-visible')
             // console.log(results)
-            console.log(response.score)
+            // console.log(response.score)
 
             scoreBox.innerHTML += `
                <p>score: <b> ${response.score.toFixed(2)}% </b></p>
@@ -118,43 +118,30 @@ const sendData = () => {
 
             results.forEach(response => {
                 const resDiv = document.createElement('div')
+                // console.log(response)
                 for(const[question, res] of Object.entries(response)){
-                    // console.log(question)
-                    // console.log(res)
-
                     resDiv.innerHTML += `<p>${question}</p>`
                     const cls = ['container', 'p-3', 'text-light','mb-2']
                     resDiv.classList.add(...cls)
-                    // const meh = res['correct_answer']
 
-                    if (res == 'not answered'){
-                        resDiv.innerHTML += `
-                                <p>not answered</p>
-                                
-                        `
+                    const selected_answer = res['answered']
+                    const correct_answer = res['correct_answer']
+
+                    if (selected_answer == correct_answer){
+                        resDiv.classList.add('bg-success')
+                        resDiv.innerHTML += `answered: ${selected_answer}`     
+                    } else {
                         resDiv.classList.add('bg-danger')
-                    }
-                    else {
-                        const selected_answer = res['answered']
-                        const correct_answer = res['correct_answer']
-                        // console.log(selected_answer, correct_answer)
-
-                        if (selected_answer == correct_answer){
-                            resDiv.classList.add('bg-success')
-                            resDiv.innerHTML += `answered: ${selected_answer}`
-                        } else {
-                            resDiv.classList.add('bg-danger')
-                            resDiv.innerHTML += `<p class ="text-muted">answered: ${selected_answer}</p>`
-                            resDiv.innerHTML += `<p class="text-success">correct answer: ${correct_answer}</p>`
-                            
-                        }
+                        resDiv.innerHTML += `<p><i class ="text-info">selected:</i> ${selected_answer || 'none'}</p>`
+                        resDiv.innerHTML += `<p class="text-warning">correct answer: ${correct_answer}</p>`   
                     }
                 }
+                
                 resultBox.append(resDiv)
             })
         },
-        error: function(error){
-            console.log(error)
+        error: function(err){
+            console.log(err)
         }
     })
 

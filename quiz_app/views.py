@@ -70,7 +70,12 @@ def save_data_view(request, pk):
 
                 results.append({q.question_text: {'correct_answer': correct_answer, 'answered': a_selected} })
             else:
-                results.append({q.question_text: 'not answered','correct_answer': correct_answer, })
+                question_answers = Answer.objects.filter(question=q)
+                for answer in question_answers:
+                    if not a_selected:
+                        correct_answer = answer.answer_text
+                results.append({q.question_text: {'correct_answer': correct_answer,'not answered': 'none'} })
+
         score_ = score * multiplier    
         Result.objects.create(course=course, user=user, score=score_)    
 
