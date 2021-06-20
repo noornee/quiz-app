@@ -7,11 +7,12 @@
 
 {% block content %}
 
-
+<a href="{% url 'quiz:course-list' %}" class="btn btn-success">go back quiz page</a>
 
   <div class="card" >
     {% if not profile_model %}
-    <a href="{% url 'users:create-profile' %}" class="btn btn-lk bg-warning text-white">create info</a>
+    <p>click the button below to create your profile</p>
+    <a href="{% url 'users:create-profile' %}" class="btn btn-lk bg-warning text-white">create profile</a>
     {% else %}
     <img src="{{ user.profile.profile_image.url }}" class="card-img-top" alt="...">
       {% for profile in profile_model %}
@@ -22,7 +23,7 @@
     </ul>
       {% endfor %}
     <div class="card-body">
-      <a href="{% url 'users:update-profile' request.user.id %}" class="btn btn-lk bg-primary text-white">update info</a>
+      <a href="{% url 'users:update-profile' request.user.id %}" class="btn btn-lk bg-primary text-white">update profile</a>
       <a href="{% url 'users:password-change' %}" class="btn btn-lk bg-danger text-white">change password</a>
     {% endif %}
   </div>
@@ -66,7 +67,7 @@
     }
     .result-card {
         width: 40rem;
-        border: 1px solid black;
+        /* border: 1px solid black; */
         border-radius: 10px;
         margin: 10px 50px;
     }
