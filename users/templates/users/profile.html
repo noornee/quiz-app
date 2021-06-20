@@ -8,43 +8,104 @@
 {% block content %}
 
 
-<div class="card" >
+
+  <div class="card" >
+    {% if not profile_model %}
+    <a href="{% url 'users:create-profile' %}" class="btn btn-lk bg-warning text-white">create info</a>
+    {% else %}
     <img src="{{ user.profile.profile_image.url }}" class="card-img-top" alt="...">
-    {% for profile in profile_model %}
+      {% for profile in profile_model %}
     <ul class="list-group list-group-flush">
       <li class="list-group-item" >username: {{ profile.user }}</li>
       <li class="list-group-item">level: {{ profile.level }}</li>
       <li class="list-group-item">department: {{ profile.department }}</li>
     </ul>
-
-    {% endfor %}
+      {% endfor %}
     <div class="card-body">
-      {% if not profile_model %}
-      <a href="{% url 'users:create-profile' %}" class="btn bg-warning text-white">create info</a>
-      {% else %}
-      <a href="{% url 'users:update-profile' request.user.id %}" class="btn bg-primary text-white">update info</a>
-      <a href="{% url 'users:password-change' %}" class="btn bg-danger text-white">change password</a>
-      {% endif %}
-    </div>
+      <a href="{% url 'users:update-profile' request.user.id %}" class="btn btn-lk bg-primary text-white">update info</a>
+      <a href="{% url 'users:password-change' %}" class="btn btn-lk bg-danger text-white">change password</a>
+    {% endif %}
+  </div>
   </div>
 
-  <h4>{{ request.user.username }}</h4>
-  <h4>{{ request.user.id }}</h4>
 
-<h4>result list</h4>
+
+
+ 
+
+
+
+
 <hr>
-{% for result in results %}
-<p>
-    {{ result.course }} :: {{ result.score }} {{ result.level }}
-</p>
-{% endfor %}
+
+<!-- <div class="result-card">
+  <h5>result list</h5>
+  {% for result in results %}
+    <div class="result-body">
+      <p>course: {{ result.course }}</p>
+      <p>score: {{ result.score }}%</p>
+      <p>date: {{ result.mod_date }}</p>
+    </div>
+  {% endfor %}
+</div> -->
+
+<div class="result-card" style="width: 18rem;">
+  {% for result in results %}
+  <ul class="list-group">
+    <li class="list-item">
+        <span class="btn bg-dark text-muted">course:</span>
+        <span class="txt">{{ result.course }}</span> 
+    </li>
+    <li class="list-item">
+        <span class="btn bg-dark text-muted">score:</span>
+        <span class="txt">{{ result.score }}%</span>
+    </li>
+    <li class="list-item">
+        <span class="btn bg-dark text-muted">date:</span> 
+        <span class="txt">{{ result.mod_date }}</span>
+    </li>
+  </ul>
+  <div class="seprator"></div>
+  {% endfor %}
+</div>
+
+
 
 <style>
-        .card {
+      .card {
         width: 30rem;
         border-radius: 10px;
         padding: 20px;
         margin: 100px auto;
+    }
+    .btn-lk {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .result-card {
+        width: 40rem;
+        border: 1px solid black;
+        border-radius: 10px;
+        margin: 10px 50px;
+    }
+    ul.list-group {
+      list-style-type: none;
+
+    }
+    .list-item {
+      margin: 10px;
+      border: 1px solid black;
+      background: yellow;
+    } 
+
+    .txt {
+      text-align: center;
+    }
+
+    .seprator {
+      height: 20px;
+      background-color: grey;
+      /* border: 2px solid black; */
     }
 </style>
 
