@@ -11,31 +11,46 @@
 {% block content %}
 
 <div class="row">
-    <div class="col text-center">
-        <p> {{ obj }} </p>
+    <div class="text-center course-name">
+        <h4> {{ obj }} </h4>
     </div>
     <!-- <div class="col text-right" id="timer-box"></div> -->
 </div>
-
+<p class="back-btn">
 <a href="{% url 'quiz:course-list' %}" class="btn btn-danger">go back</a>
-
+</p>
 
 <form id="quiz-form">
     {% csrf_token %}
-        <div id="quiz-box"> </div>
-    <button type="submit" class="btn btn-primary mt-5">submit</button>
+    <div id="quiz-box"></div>
+    <hr />
+<button type="submit" class="btn btn-primary submit-btn">submit</button>
 </form>
 
 <div id="score-box" class="container"></div>
 <div id="result-box"></div>
 
+<style type="text/css" media="all">
+.course-name {
+  margin-top: 5px;
+}
+#quiz-box {
+    margin:50px 30px;
 
+}
+ .quest {
+   margin-bottom: 10px;
+ }
+
+
+.back-btn, .submit-btn {
+   position: absolute ;
+   right: 30px ;
+ }
+
+</style>
 
 {% endblock content %}
-
-
-
-
 
 
 

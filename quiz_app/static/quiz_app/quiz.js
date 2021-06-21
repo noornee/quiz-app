@@ -58,7 +58,7 @@ $.ajax({
         for (const [question, answers] of Object.entries(el)){
             quizBox.innerHTML += `
                 <hr>
-                <div class="mb-2">
+                <div class="quest">
                     <b>${question}</b>                                  
                 </div>
             `
