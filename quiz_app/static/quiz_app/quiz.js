@@ -129,11 +129,11 @@ const sendData = () => {
 
                     if (selected_answer == correct_answer){
                         resDiv.classList.add('bg-success')
-                        resDiv.innerHTML += `answered: ${selected_answer}`     
+                        resDiv.innerHTML += `answer: ${selected_answer}`     
                     } else {
                         resDiv.classList.add('bg-danger')
                         resDiv.innerHTML += `<p><i class ="text-info">selected:</i> ${selected_answer || 'none'}</p>`
-                        resDiv.innerHTML += `<p class="text-warning">correct answer: ${correct_answer}</p>`   
+                        resDiv.innerHTML += `<p class="text-warning"><i class="text-info">correct answer:</i> ${correct_answer}</p>`   
                     }
                 }
                 

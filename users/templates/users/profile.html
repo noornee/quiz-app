@@ -7,7 +7,7 @@
 
 {% block content %}
 
-<a href="{% url 'quiz:course-list' %}" class="btn btn-success">go back quiz page</a>
+<a href="{% url 'quiz:course-list' %}" class="btn btn-danger back-btn">go back</a>
 
   <div class="card" >
     {% if not profile_model %}
@@ -39,10 +39,17 @@
         <span class="btn bg-dark text-muted">course:</span>
         <span class="txt">{{ result.course }}</span> 
     </li>
-    <li class="list-item">
+    {% if result.score < 50 %}
+    <li class="list-item bg-danger text-white">
         <span class="btn bg-dark text-muted">score:</span>
         <span class="txt">{{ result.score }}%</span>
     </li>
+    {% else %}
+    <li class="list-item bg-success text-white">
+      <span class="btn bg-dark text-muted">score:</span>
+      <span class="txt">{{ result.score }}%</span>
+    </li>    
+    {% endif %}
     <li class="list-item">
         <span class="btn bg-dark text-muted">date:</span> 
         <span class="txt">{{ result.mod_date }}</span>
@@ -55,6 +62,11 @@
 
 
 <style>
+  .back-btn {
+   position: absolute ;
+   right: 30px ;
+   margin-top: 5px;
+ } 
       .card {
         width: 30rem;
         border-radius: 10px;
@@ -78,7 +90,7 @@
     .list-item {
       margin: 10px;
       border: 1px solid black;
-      background: yellow;
+      /* background: yellow; */
     } 
 
     .txt {
