@@ -33,74 +33,57 @@
 <hr>
 
 <div class="result-card" style="width: 18rem;">
+  <table>
+    <tr class="text-muted">
+      <th>Course</th>
+      <th>Score</th>
+      <th>Date</th>
+    </tr>
   {% for result in results %}
-  <ul class="list-group">
-    <li class="list-item">
-        <span class="btn bg-dark text-muted">course:</span>
-        <span class="txt">{{ result.course }}</span> 
-    </li>
-    {% if result.score < 50 %}
-    <li class="list-item bg-danger text-white">
-        <span class="btn bg-dark text-muted">score:</span>
-        <span class="txt">{{ result.score }}%</span>
-    </li>
-    {% else %}
-    <li class="list-item bg-success text-white">
-      <span class="btn bg-dark text-muted">score:</span>
-      <span class="txt">{{ result.score }}%</span>
-    </li>    
-    {% endif %}
-    <li class="list-item">
-        <span class="btn bg-dark text-muted">date:</span> 
-        <span class="txt">{{ result.mod_date }}</span>
-    </li>
-  </ul>
-  <div class="seprator"></div>
+    <tr>
+      <td>{{ result.course }}</td>
+        {% if result.score < 50 %}
+          <td class="bg-danger text-white">{{ result.score }}%</td>
+          {% else %}  
+          <td class="bg-success text-white">{{ result.score }}%</td>
+        {% endif %}
+      <td>{{ result.mod_date }}</td>
+    </tr>
   {% endfor %}
+  </table>
 </div>
 
 
 
 <style>
-  .back-btn {
-   position: absolute ;
-   right: 30px ;
-   margin-top: 5px;
- } 
-      .card {
-        width: 30rem;
-        border-radius: 10px;
-        padding: 20px;
-        margin: 100px auto;
+    .back-btn {
+      position: absolute ;
+      right: 30px ;
+      margin-top: 5px;
+      
+    } 
+
+    .card {
+      width: 25rem;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 50px auto;
     }
+
     .btn-lk {
       display: block;
       margin-bottom: 5px;
     }
-    .result-card {
-        width: 40rem;
-        /* border: 1px solid black; */
-        border-radius: 10px;
-        margin: 10px 50px;
-    }
-    ul.list-group {
-      list-style-type: none;
 
+    table {
+      width:400px;
+      margin-left: 10px;
+      margin-bottom: 100px;
     }
-    .list-item {
-      margin: 10px;
-      border: 1px solid black;
-      /* background: yellow; */
-    } 
 
-    .txt {
+    td, th {
+      border: 1px solid grey;
       text-align: center;
-    }
-
-    .seprator {
-      height: 20px;
-      background-color: grey;
-      /* border: 2px solid black; */
     }
 </style>
 
