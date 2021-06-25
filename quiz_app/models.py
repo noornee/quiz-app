@@ -7,7 +7,7 @@ from django.db import models
 class Course(models.Model):
     course_title = models.CharField(max_length=150)
     number_of_questions = models.IntegerField()
-    duration = models.IntegerField(help_text='duration of course in minutes')
+    duration = models.IntegerField(help_text='duration of course in minutes',blank=True, null=True)
 
     def __str__(self):
         return self.course_title
